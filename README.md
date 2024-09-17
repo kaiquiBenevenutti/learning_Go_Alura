@@ -4,7 +4,3 @@ Este repositório é dedicado ao meu aprendizado da linguagem **Golang**. Aqui, 
 
 ## Objetivo
 O objetivo deste repositório é praticar e dominar o uso de Go, desde os fundamentos até tópicos mais avançados, como concorrência, gerenciamento de pacotes, testes e uso de APIs.
-
-## Estrutura do Repositório
-A estrutura está organizada de forma a refletir diferentes áreas do aprendizado, com cada diretório representando uma nova seção de aprendizado:
-
