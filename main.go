@@ -3,16 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	nome := "Kaiqui"
-	versao := 1.0
-	fmt.Println("Olá, sr.", nome)
-	fmt.Println("Esse programa está na versão", versao)
+
+	bemVindo()
 
 	fmt.Println("")
 
-	fmt.Println("1- Iniciar Monitoramento")
-	fmt.Println("2- Exibir Logs")
-	fmt.Println("0- Sair do Programa")
+	exibirMenu()
 
 	var comando int
 	fmt.Scan(&comando) // o & e para mostrar o caminho para onde a resposta deve ser salva, nesse caso o comando
@@ -21,6 +17,23 @@ func main() {
 
 	fmt.Println("")
 
+	definirEscolha(comando)
+}
+
+func bemVindo() {
+	nome := "Kaiqui"
+	versao := 1.2
+	fmt.Println("Olá, sr.", nome)
+	fmt.Println("Esse programa está na versão", versao)
+}
+
+func exibirMenu() {
+	fmt.Println("1- Iniciar Monitoramento")
+	fmt.Println("2- Exibir Logs")
+	fmt.Println("0- Sair do Programa")
+}
+
+func definirEscolha(comando int) {
 	switch comando {
 	case 1:
 		fmt.Println("Monitoramento Iniciado.")
