@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	bemVindo()
@@ -9,8 +12,19 @@ func main() {
 	exibirMenu()
 	comando := lerComando()
 	fmt.Println("")
-	
-	definirEscolha(comando)
+
+	switch comando {
+	case 1:
+		fmt.Println("Monitoramento Iniciado.")
+	case 2:
+		fmt.Println("Exibindo logs.")
+	case 0:
+		fmt.Println("Saindo do programa...")
+		os.Exit(0) //para informar ao computador que saiu com sucesso, sem erros
+	default:
+		fmt.Println("Tente novamente.")
+		os.Exit(-1) //para informar ao computador que algo deu errado
+	}
 }
 
 func bemVindo() {
@@ -26,23 +40,10 @@ func exibirMenu() {
 	fmt.Println("0- Sair do Programa")
 }
 
-func lerComando() int{
+func lerComando() int {
 	var comandoLido int
 	fmt.Scan(&comandoLido) // o & e para mostrar o caminho para onde a resposta deve ser salva, nesse caso o comando
 	fmt.Println("O comando escolhido foi", comandoLido)
 
 	return comandoLido
-}
-
-func definirEscolha(comando int) {
-	switch comando {
-	case 1:
-		fmt.Println("Monitoramento Iniciado.")
-	case 2:
-		fmt.Println("Exibindo logs.")
-	case 0:
-		fmt.Println("Obrigado, até a proxima!")
-	default:
-		fmt.Println("Tente novamente.")
-	}
 }
