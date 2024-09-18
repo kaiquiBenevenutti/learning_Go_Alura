@@ -18,4 +18,17 @@ func main() {
 	fmt.Scan(&comando) // o & e para mostrar o caminho para onde a resposta deve ser salva, nesse caso o comando
 
 	fmt.Println("O comando escolhido foi", comando)
+
+	fmt.Println("")
+
+	switch comando {
+	case 1:
+		fmt.Println("Monitoramento Iniciado.")
+	case 2:
+		fmt.Println("Exibindo logs.")
+	case 0:
+		fmt.Println("Obrigado, até a proxima!")
+	default:
+		fmt.Println("Tente novamente.")
+	}
 }
