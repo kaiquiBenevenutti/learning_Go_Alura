@@ -3,20 +3,13 @@ package main
 import "fmt"
 
 func main() {
-
 	bemVindo()
-
 	fmt.Println("")
 
 	exibirMenu()
-
-	var comando int
-	fmt.Scan(&comando) // o & e para mostrar o caminho para onde a resposta deve ser salva, nesse caso o comando
-
-	fmt.Println("O comando escolhido foi", comando)
-
+	comando := lerComando()
 	fmt.Println("")
-
+	
 	definirEscolha(comando)
 }
 
@@ -31,6 +24,14 @@ func exibirMenu() {
 	fmt.Println("1- Iniciar Monitoramento")
 	fmt.Println("2- Exibir Logs")
 	fmt.Println("0- Sair do Programa")
+}
+
+func lerComando() int{
+	var comandoLido int
+	fmt.Scan(&comandoLido) // o & e para mostrar o caminho para onde a resposta deve ser salva, nesse caso o comando
+	fmt.Println("O comando escolhido foi", comandoLido)
+
+	return comandoLido
 }
 
 func definirEscolha(comando int) {
