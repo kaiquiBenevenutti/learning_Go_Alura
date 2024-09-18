@@ -1,24 +1,21 @@
 package main
 
-import (
-	"fmt"
-	"reflect"
-)
+import "fmt"
 
 func main() {
-	var nome = "Kaiqui"
-	nome2 := "Ju"
-	var idadeKaiqui int = 18
-	idadeJu := 78
-	var numero float32 = 1.5
-	numero2 := 2.55
+	nome := "Kaiqui"
+	versao := 1.0
+	fmt.Println("Olá, sr.", nome)
+	fmt.Println("Esse programa está na versão", versao)
 
-	fmt.Println("Nome:", nome)
-	fmt.Println("Nome 2:", nome2)
-	fmt.Println("Idade Kaiqui:", idadeKaiqui)
-	fmt.Println("Idade Ju:", idadeJu)
-	fmt.Println("Número 1:", numero)
-	fmt.Println("Número 2:", numero2)
+	fmt.Println("")
 
-	fmt.Println("O tipo da variavel nome é", reflect.TypeOf(nome))
+	fmt.Println("1- Iniciar Monitoramento")
+	fmt.Println("2- Exibir Logs")
+	fmt.Println("0- Sair do Programa")
+
+	var comando int
+	fmt.Scan(&comando) // o & e para mostrar o caminho para onde a resposta deve ser salva, nesse caso o comando
+
+	fmt.Println("O comando escolhido foi", comando)
 }
