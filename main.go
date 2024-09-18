@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -15,7 +16,7 @@ func main() {
 
 	switch comando {
 	case 1:
-		fmt.Println("Monitoramento Iniciado.")
+		iniciarMonitoramento()
 	case 2:
 		fmt.Println("Exibindo logs.")
 	case 0:
@@ -29,7 +30,7 @@ func main() {
 
 func bemVindo() {
 	nome := "Kaiqui"
-	versao := 1.2
+	versao := 1.3
 	fmt.Println("Olá, sr.", nome)
 	fmt.Println("Esse programa está na versão", versao)
 }
@@ -46,4 +47,16 @@ func lerComando() int {
 	fmt.Println("O comando escolhido foi", comandoLido)
 
 	return comandoLido
+}
+
+func iniciarMonitoramento() {
+	fmt.Println("Monitorando...")
+	site := "https://www.alura.com.br"
+	resp, _ := http.Get(site)
+
+	if resp.StatusCode == 200 {
+		fmt.Println("Site:", site, "foi carregado com sucesso!")
+	} else {
+		fmt.Println("Site:",site , "esta com problemas. Status Code:", resp.StatusCode)
+	}
 }
