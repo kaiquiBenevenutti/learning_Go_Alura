@@ -55,13 +55,13 @@ func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
 	sites := []string{"https://www.alura.com.br", "https://random-status-code.herokuapp.com/", "https://www.caelum.com.br"}
 
-	for i := 0; i < len(sites); i++ {
-		resp, _ := http.Get(sites[i])
+	for _, site := range sites {
+		resp, _ := http.Get(site)
 
 		if resp.StatusCode == 200 {
-			fmt.Println("Site:", sites[i], "foi carregado com sucesso!")
+			fmt.Println("Site:", site, "foi carregado com sucesso!")
 		} else {
-			fmt.Println("Site:", sites[i], "esta com problemas. Status Code:", resp.StatusCode)
+			fmt.Println("Site:", site, "esta com problemas. Status Code:", resp.StatusCode)
 		}
 	}
 }
