@@ -101,6 +101,6 @@ func lerSitesDoArquivo() []string {
 			break
 		}
 	}
-
+	arquivo.Close()
 	return sites
 }
