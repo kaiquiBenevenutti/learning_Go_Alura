@@ -11,7 +11,7 @@ import (
 )
 
 const monitoramentos = 3
-const delay = 5
+const delay = 3
 
 func main() {
 	bemVindo()
@@ -39,7 +39,7 @@ func main() {
 
 func bemVindo() {
 	nome := "Kaiqui"
-	versao := 2.0
+	versao := 2.1
 	fmt.Println("Olá, sr.", nome)
 	fmt.Println("Esse programa está na versão", versao)
 }
