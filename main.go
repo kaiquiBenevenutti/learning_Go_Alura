@@ -39,7 +39,7 @@ func main() {
 
 func bemVindo() {
 	nome := "Kaiqui"
-	versao := 1.9
+	versao := 2.0
 	fmt.Println("Olá, sr.", nome)
 	fmt.Println("Esse programa está na versão", versao)
 }
@@ -80,6 +80,9 @@ func iniciarMonitoramento() {
 }
 
 func lerSitesDoArquivo() []string {
+
+	var sites []string
+
 	arquivo, err := os.Open("sites.txt")
 
 	if err != nil {
@@ -91,11 +94,13 @@ func lerSitesDoArquivo() []string {
 	for {
 		linha, err := leitor.ReadString('\n')
 		linha = strings.TrimSpace(linha)
-		fmt.Println(linha)
+
+		sites = append(sites, linha)
+
 		if err == io.EOF {
 			break
 		}
 	}
 
-	return []string{"oi"}
+	return sites
 }
