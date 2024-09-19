@@ -85,7 +85,12 @@ func lerSitesDoArquivo() []string {
 	}
 
 	leitor := bufio.NewReader(arquivo)
-	leitor.ReadString('\n')
+	linha, err := leitor.ReadString('\n')
 
+	if err != nil {
+		fmt.Println("Ocorreu um erro:", err)
+	}
+
+	fmt.Println(linha)
 	return []string{"oi"}
 }
