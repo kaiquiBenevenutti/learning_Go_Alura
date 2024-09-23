@@ -10,19 +10,39 @@ type ContaCorrente struct {
 }
 
 func main() {
-	contaDoKaiqui := ContaCorrente{titular: "Kaiqui", numeroAgencia: 589, numeroConta: 123456, saldo: 125.5}
+	contaDoKaiqui := ContaCorrente{}
+	contaDoKaiqui.titular = "Kaiqui"
+	contaDoKaiqui.saldo = 400
 
-	fmt.Println(contaDoKaiqui)
+	fmt.Println("Sr.", contaDoKaiqui.titular, "seu saldo é:", contaDoKaiqui.saldo)
 
-	contaDoRafael := ContaCorrente{"Rafael", 222, 111222, 200}
+	valorDoSaque := 300.
 
-	fmt.Println(contaDoRafael)
+	fmt.Println(contaDoKaiqui.sacar(valorDoSaque))
 
-	contaDaJu := ContaCorrente{}
-	contaDaJu.titular = "Ju"
-	contaDaJu.numeroAgencia = 555
-	contaDaJu.numeroConta = 654321
-	contaDaJu.saldo = 1050.56
+	valorDoDeposito := 500.
 
-	fmt.Println(contaDaJu)
+	fmt.Println(contaDoKaiqui.depositar(valorDoDeposito))
+}
+
+func (c *ContaCorrente) sacar(valorDoSaque float64) (string, float64) {
+	podeSacar := valorDoSaque <= c.saldo && valorDoSaque > 0
+
+	if podeSacar {
+		c.saldo -= valorDoSaque
+		return "Saque realizado com sucesso! Saldo atual:", c.saldo
+	} else {
+		return "Saldo insuficiente! Saldo atual:", c.saldo
+	}
+}
+
+func (c *ContaCorrente) depositar(valorDoDeposito float64) (string, float64) {
+	podeDepositar := valorDoDeposito > 0
+
+	if podeDepositar {
+		c.saldo += valorDoDeposito
+		return "Deposito realizado com sucesso! Saldo atual:", c.saldo
+	} else {
+		return "Deposito Negado! Saldo atual:", c.saldo
+	}
 }
