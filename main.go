@@ -10,27 +10,15 @@ type ContaCorrente struct {
 }
 
 func main() {
-	contaDoKaiqui := ContaCorrente{}
-	contaDoKaiqui.titular = "Kaiqui"
-	contaDoKaiqui.saldo = 600
+	contaDoRafael := ContaCorrente{titular: "Rafael", saldo: 300}
+	contaDoGustavo := ContaCorrente{titular: "Gustavo", saldo: 500}
 
-	contaMarcos := ContaCorrente{}
-	contaMarcos.titular = "Marcos"
-	contaMarcos.saldo = 500
+	status := contaDoGustavo.transferir(100, &contaDoRafael)
 
-	fmt.Println("Sr.", contaDoKaiqui.titular, "seu saldo é:", contaDoKaiqui.saldo)
-	fmt.Println("Sr.", contaMarcos.titular, "seu saldo é:", contaMarcos.saldo)
+	fmt.Println(status)
 
-	status := contaDoKaiqui.transferir(300, &contaMarcos)
-
-	if status {
-		fmt.Println("Transferencia realizada com sucesso!")
-	} else {
-		fmt.Println("Transferencia negada!")
-	}
-
-	fmt.Println("Sr.", contaDoKaiqui.titular, "seu saldo é:", contaDoKaiqui.saldo)
-	fmt.Println("Sr.", contaMarcos.titular, "seu saldo é:", contaMarcos.saldo)
+	fmt.Println(contaDoGustavo)
+	fmt.Println(contaDoRafael)
 }
 
 func (c *ContaCorrente) sacar(valorDoSaque float64) (string, float64) {
@@ -56,11 +44,9 @@ func (c *ContaCorrente) depositar(valorDoDeposito float64) (string, float64) {
 }
 
 func (c *ContaCorrente) transferir(valorDaTransferencia float64, contaDestino *ContaCorrente) bool {
-	podeTransferir := valorDaTransferencia <= c.saldo && c != contaDestino
-
-	if podeTransferir {
+	if valorDaTransferencia <= c.saldo && valorDaTransferencia > 0 {
 		c.saldo -= valorDaTransferencia
-		contaDestino.saldo += valorDaTransferencia
+		contaDestino.depositar(valorDaTransferencia)
 		return true
 	} else {
 		return false
