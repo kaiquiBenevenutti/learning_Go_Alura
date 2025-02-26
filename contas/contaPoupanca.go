@@ -1,16 +1,14 @@
 ﻿package contas
 
-import (
-	"Primeiro_Projeto/clientes"
-)
+import "Primeiro_Projeto/clientes"
 
-type ContaCorrente struct {
-	Titular                    clientes.Titular
-	NumeroAgencia, NumeroConta int
-	saldo                      float64
+type ContaPoupanca struct {
+	clientes.Titular
+	NumeroAgencia, NumeroConta, Operacao int
+	saldo                                float64
 }
 
-func (c *ContaCorrente) Sacar(valorDoSaque float64) string {
+func (c *ContaPoupanca) Sacar(valorDoSaque float64) string {
 	podeSacar := valorDoSaque > 0 && valorDoSaque <= c.saldo
 	if podeSacar {
 		c.saldo -= valorDoSaque
@@ -20,7 +18,7 @@ func (c *ContaCorrente) Sacar(valorDoSaque float64) string {
 	}
 }
 
-func (c *ContaCorrente) Depositar(valorDoDeposito float64) (string, float64) {
+func (c *ContaPoupanca) Depositar(valorDoDeposito float64) (string, float64) {
 	podeDeposito := valorDoDeposito > 0
 	if podeDeposito {
 		c.saldo += valorDoDeposito
@@ -30,6 +28,6 @@ func (c *ContaCorrente) Depositar(valorDoDeposito float64) (string, float64) {
 	}
 }
 
-func (c *ContaCorrente) Saldo() (string, float64) {
+func (c *ContaPoupanca) Saldo() (string, float64) {
 	return "Saldo da conta :", c.saldo
 }
